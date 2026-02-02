@@ -126,6 +126,7 @@ enum Tab {
 struct HomeView: View {
 
     @State private var showFilter = false
+    @State private var showAR = false
 
     var body: some View {
 
@@ -244,7 +245,8 @@ extension HomeView {
 
                 HStack(spacing: 20) {
 
-                    Button { } label: {
+
+                    Button { showAR = true } label: {
                         Text("Open AR")
                             .font(.caption.bold())
                             .padding(.horizontal, 15)
@@ -253,6 +255,9 @@ extension HomeView {
                             .foregroundColor(.black)
                             .cornerRadius(12)
                     }
+                    .fullScreenCover(isPresented: $showAR) {
+                                ARViewControllerWrapper()
+                            }
 
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color.white)
@@ -314,11 +319,11 @@ extension HomeView {
 
 struct FilterBottomSheet: View {
 
-    @State private var price: Double = 360
+    @State private var price: Double = 260
     @State private var selectedCategory = "Chairs"
     @State private var selectedRating = 4
 
-    let categories = ["Chairs","Sofa","Dining Room","Dining Room","Sofa Bed","Others"]
+    let categories = ["Chairs","Sofa","Dining Room","Dining Room1","Sofa Bed","Others"]
 
     var body: some View {
 
@@ -455,7 +460,8 @@ struct FilterBottomSheet: View {
 
         }
         .padding()
-        .presentationDetents([.medium, .large])
+        .presentationDetents([.fraction(0.75)])
+//        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.hidden)
     }
 }

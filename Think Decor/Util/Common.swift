@@ -1,6 +1,5 @@
 //
 //  Common.swift
-//  SampleSwiftUI
 //
 //  Created by Vijayan on 07/10/25.
 //
