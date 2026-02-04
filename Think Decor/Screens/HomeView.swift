@@ -140,7 +140,11 @@ struct HomeView: View {
 
                 categorySection().padding(.horizontal, 10)
 
-                popularSection().padding(.horizontal, 10)
+//                NavigationStack {
+                    
+                    popularSection().padding(.horizontal, 10)
+                    
+//                }
 
                 roomsSection().padding(.horizontal, 10)
             }
@@ -534,11 +538,31 @@ extension HomeView {
                 GridItem(.flexible())
             ], spacing: 14) {
 
-                popularItem(image: "sofa1", title: "Leatherette Sofa", price: "$30.99")
-                popularItem(image: "sofa2", title: "Modern Sofa", price: "$45.99")
-                popularItem(image: "sofa1", title: "Leatherette Sofa", price: "$30.99")
-                popularItem(image: "sofa2", title: "Modern Sofa", price: "$45.99")
+                NavigationLink {
+                    ProductDetailView()
+                } label: {
+                    popularItem(image: "sofa1", title: "Leatherette Sofa", price: "$30.99")
+                }
+
+                NavigationLink {
+                    ProductDetailView()
+                } label: {
+                    popularItem(image: "sofa2", title: "Modern Sofa", price: "$45.99")
+                }
+
+                NavigationLink {
+                    ProductDetailView()
+                } label: {
+                    popularItem(image: "sofa1", title: "Leatherette Sofa", price: "$30.99")
+                }
+
+                NavigationLink {
+                    ProductDetailView()
+                } label: {
+                    popularItem(image: "sofa2", title: "Modern Sofa", price: "$45.99")
+                }
             }
+            .buttonStyle(.plain)
         }
     }
 

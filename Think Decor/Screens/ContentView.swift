@@ -24,7 +24,9 @@ struct ContentView: View {
             Group {
                 switch selected {
                 case .home:
-                    HomeView()
+                    NavigationStack {
+                        HomeView()
+                    }
                 case .explore:
                     Text("Explore")
                 case .scan:
