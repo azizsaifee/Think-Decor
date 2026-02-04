@@ -13,7 +13,6 @@ struct ProductDetailView: View {
     let variants = ["Silver", "Black"]
 
     var body: some View {
-        
 
         VStack(spacing: 0) {
 

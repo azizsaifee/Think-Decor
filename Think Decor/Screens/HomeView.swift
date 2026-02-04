@@ -15,6 +15,7 @@ struct HomeView: View {
     @State private var showFilter = false
     @State private var showAR = false
     @Binding var hideTabBar: Bool
+    @State private var goToCart = false
 
     var body: some View {
 
@@ -94,22 +95,27 @@ extension HomeView {
 
                 Spacer()
 
-                ZStack(alignment: .topTrailing) {
+                NavigationLink(destination: CartView(hideTabBar: $hideTabBar), isActive: $goToCart) {
 
-                    Image(systemName: "cart")
-                        .font(.title2)
-                        .foregroundColor(.white)
+                    ZStack(alignment: .topTrailing) {
 
-                    Circle()
-                        .fill(Color(hex: "#00594E"))
-                        .frame(width: 16, height: 16)
-                        .overlay(
-                            Text("2")
-                                .font(.system(size: 10, weight: .bold))
-                                .foregroundColor(.white)
-                        )
-                        .offset(x: 8, y: -8)
+                        Image(systemName: "cart")
+                            .font(.title2)
+                            .foregroundColor(.white)
+
+                        Circle()
+                            .fill(Color(hex: "#00594E"))
+                            .frame(width: 16, height: 16)
+                            .overlay(
+                                Text("2")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundColor(.white)
+                            )
+                            .offset(x: 8, y: -8)
+                    }
                 }
+                .buttonStyle(.plain)
+
             }
             .padding(.top, 20)
             .padding(.horizontal, 20)
