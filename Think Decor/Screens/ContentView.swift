@@ -12,7 +12,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selected: Tab = .home
-    
+    @State private var hideTabBar = false   // ✅
+
     var body: some View {
         
         ZStack {
@@ -24,7 +25,9 @@ struct ContentView: View {
             Group {
                 switch selected {
                 case .home:
-                    HomeView()
+                    NavigationStack {
+                        HomeView(hideTabBar: $hideTabBar)
+                    }
                 case .explore:
                     Text("Explore")
                 case .scan:
@@ -38,7 +41,9 @@ struct ContentView: View {
         }
         // ✅ Correct way to pin bottom bar
         //        .safeAreaInset(edge: .bottom) {
-        CustomTabBar(selected: $selected)
+        if !hideTabBar {
+                        CustomTabBar(selected: $selected)
+                    }
         //        }
     }
 }
