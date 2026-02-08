@@ -16,6 +16,7 @@ struct HomeView: View {
     @State private var showAR = false
     @Binding var hideTabBar: Bool
     @State private var goToCart = false
+    @State private var goToLogin = false
 
     var body: some View {
 
@@ -89,13 +90,24 @@ extension HomeView {
             // top icons
             HStack {
 
-                Image(systemName: "square.grid.2x2")
-                    .font(.title2)
-                    .foregroundColor(.white)
+                Button {
+                    goToLogin = true
+                } label: {
+                    
+                    Image(systemName: "square.grid.2x2")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                }
+                .buttonStyle(.plain)
+                .navigationDestination(isPresented: $goToLogin) {
+                    LoginView(hideTabBar: $hideTabBar)
+                }
 
                 Spacer()
 
-                NavigationLink(destination: CartView(hideTabBar: $hideTabBar), isActive: $goToCart) {
+                Button {
+                    goToCart = true
+                } label: {
 
                     ZStack(alignment: .topTrailing) {
 
@@ -115,6 +127,9 @@ extension HomeView {
                     }
                 }
                 .buttonStyle(.plain)
+                .navigationDestination(isPresented: $goToCart) {
+                    CartView(hideTabBar: $hideTabBar)
+                }
 
             }
             .padding(.top, 20)
