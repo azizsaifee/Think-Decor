@@ -16,7 +16,7 @@ struct Think_DecorApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
         }
     }
 }

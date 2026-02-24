@@ -41,6 +41,13 @@ struct HomeView: View {
             .padding(.top, 10)
             .padding(.bottom, 20) // breathing space above tab bar
         }
+        .toolbar(.hidden, for: .navigationBar)
+        .onAppear {
+            hideTabBar = false
+        }
+        .onDisappear {
+            hideTabBar = false
+        }
     }
 }
 
@@ -99,9 +106,9 @@ extension HomeView {
                         .foregroundColor(.white)
                 }
                 .buttonStyle(.plain)
-                .navigationDestination(isPresented: $goToLogin) {
-                    LoginView(hideTabBar: $hideTabBar)
-                }
+//                .navigationDestination(isPresented: $goToLogin) {
+//                    LoginView(hideTabBar: $hideTabBar)
+//                }
 
                 Spacer()
 
