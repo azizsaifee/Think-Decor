@@ -72,6 +72,7 @@ struct OnboardingPageView: View {
     let model: OnboardingModel
     let index: Int
     let total: Int
+    @State private var goToRegister = false
 
     @Binding var currentIndex: Int
     let onLastPage: () -> Void
@@ -153,10 +154,16 @@ struct OnboardingPageView: View {
 
                                 Button {
                                     print("Register tapped")
+                                    goToRegister = true
+
                                 } label: {
                                     Text("Register")
                                         .font(.system(size: 13, weight: .semibold))
                                         .foregroundColor(Color(hex: "#00B2A9"))
+                                }
+                                
+                                .navigationDestination(isPresented: $goToRegister) {
+                                    RegisterView(hideTabBar: .constant(false))
                                 }
                             }
                             .padding(.top, 10)

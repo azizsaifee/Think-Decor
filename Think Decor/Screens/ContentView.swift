@@ -35,7 +35,9 @@ struct ContentView: View {
                 case .inbox:
                     Text("Inbox")
                 case .profile:
-                    Text("Profile")
+                    ProfileView()
+
+//                    Text("Profile")
                 }
             }
         }
